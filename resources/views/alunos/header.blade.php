@@ -30,8 +30,8 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="#"><b>Agendar Avaliações</b></a></li>
-				<li><a href="#"><b>Avaliações Agendadas</b></a></li>
+				<li><a href="agendamento"><b>Agendar Avaliações</b></a></li>
+				<li><a href="agendadas"><b>Avaliações Agendadas</b></a></li>
 			</ul>
 	      
 			<ul class="nav navbar-nav navbar-right">

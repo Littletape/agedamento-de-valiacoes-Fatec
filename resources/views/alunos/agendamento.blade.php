@@ -2,13 +2,13 @@
 
 @section("conteudo")
 <div class="row">
-	<h1><center>Agerndamento de Avaliações</center></h1>
+	<h1><center>Agendamento de Avaliações</center></h1>
 </div>
 
 <div class="row">
-	<div class="col-md-12 col-xs-12">
+	<div class="col-md-8 col-md-offset-2 col-xs-12">
 		<form>
-			<div class="panel panel-default">
+			<div class="panel panel-primary">
 				<div class="panel-heading"><center><b>Semestre XX</b></center></div>
 				<table class="table table-striped">
 					<thead>
