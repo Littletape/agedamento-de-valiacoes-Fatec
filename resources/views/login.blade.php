@@ -17,10 +17,10 @@
 <body>
 
 <div class="container">
-	<br>
+	<br><br><br>
 	<div>
 		<div class="row">
-			<center><img src="/images/fatec_logo.png" width="25%"></center>
+			<center><img src="/images/fatec_logo.png" width="25%" title="Logo da Fatec de Jaboticabal"></center>
 		</div><br>
 
 		<form>
@@ -49,5 +49,10 @@
 	
 </div>
 
+<div class='container'>@yeild('container')</div>
+
 </body>
 </html>
+<style type="text/css">
+	.form-control{border-color: grey;}
+</style>

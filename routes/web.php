@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('login');
 });
+
+/*Route::get('/header', function () {
+    return view('alunos.header');
+});
+*/
+
+Route::get('/agendadas', function () {
+	return view('alunos.agendadas');
+});
+
+Route::get('/agendamento', function () {
+	return view('alunos.agendamento');
+});
