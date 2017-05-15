@@ -15,10 +15,12 @@ Route::get('/', function () {
     return view('login');
 });
 
-/*Route::get('/header', function () {
-    return view('alunos.header');
-});
-*/
+// Route::group(['prefix'=>'pessoa'],function(){
+
+Route::post('/login','PessoasController@login');  //COntroller Login
+
+
+// });
 
 Route::get('/agendadas', function () {
 	return view('alunos.agendadas');
