@@ -8,7 +8,7 @@
 			<center><img src="/images/fatec_logo.png" width="25%" title="Logo da Fatec de Jaboticabal"></center>
 		</div><br>
 
-		<form type="post" method="post" action="{{url('/login')}}">
+		<form type="post" method="post" action="{{url('/validacao')}}">
 		{!!csrf_field()!!}
 
 		<div class="row">

@@ -17,10 +17,16 @@ class PessoasController extends Controller
 		$erro;
 		// verifica se a busca retornou resultado
 		if(isset($search[0]) ){
-			
+			$usuario = $search[0];
+
 			// verifica se asenha esta correta
-			if($search[0]['senha'] == $login['senha']){
-				return view('alunos.agendadas');
+			if($usuario['senha'] == $login['senha']){
+				$request->session()->put('id',$usuario['id']);
+				$request->session()->put('senha',$usuario['senha']);
+				$request->session()->put('nome',$usuario['nome']);
+				$request->session()->put('permissao_id',$usuario['permissao_id']);
+				$request->session()->put('logado',true);
+				return redirect('/agendadas');
 			}else{
 				$erro = 2;
 				return view('login',compact('erro'));
@@ -30,5 +36,11 @@ class PessoasController extends Controller
 			$erro = 1;
 			return view('login',compact('erro'));
 		}
+	}
+
+	// função que desconecta o usuario 
+	public function logout(){
+		session()->flush();
+		return redirect('/login');
 	}
 }

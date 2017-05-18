@@ -11,13 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('login');
 });
 
 // Route::group(['prefix'=>'pessoa'],function(){
 
-Route::post('/login','PessoasController@login');  //COntroller Login
+Route::post('/validacao','PessoasController@login');  //COntroller Login
+
+Route::get('/logout','PessoasController@logout');  //COntroller Login
 
 
 // });
