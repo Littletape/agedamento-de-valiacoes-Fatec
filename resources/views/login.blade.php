@@ -21,13 +21,15 @@
 		<div class="row">
 		<div class="col-xs-12 col-md-4 col-md-offset-4">
 			<input type="senha" name="senha" id="senha" placeholder="Senha" class="form-control">
-			@if( $erro == 1)
-			<br>
-			<p class="alert alert-danger">E-mail não cadastrado</p>
-			@endif
-			@if( $erro == 2)
-			<br>
-			<p class="alert alert-danger">Senha incorreta</p>
+			@if( isset($erro))
+				@if( $erro == 1)
+				<br>
+				<p class="alert alert-danger">E-mail não cadastrado</p>
+				@endif
+				@if( $erro == 2)
+				<br>
+				<p class="alert alert-danger">Senha incorreta</p>
+				@endif
 			@endif
 
 		</div>
