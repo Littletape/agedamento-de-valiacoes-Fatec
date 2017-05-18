@@ -31,3 +31,12 @@ Route::get('/agendadas', function () {
 Route::get('/agendamento', function () {
 	return view('alunos.agendamento');
 });
+
+//Area do admin
+Route::get('/provas', function(){
+	return view('admin.provas');
+});
+
+Route::get('/avaliar', function(){
+	return view('admin.avaliar');
+});
