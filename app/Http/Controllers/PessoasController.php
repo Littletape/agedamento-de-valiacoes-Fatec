@@ -41,6 +41,6 @@ class PessoasController extends Controller
 	// função que desconecta o usuario 
 	public function logout(){
 		session()->flush();
-		return redirect('/login');
+		return redirect('/');
 	}
 }
