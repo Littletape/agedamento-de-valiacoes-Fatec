@@ -16,6 +16,7 @@
 	<div class="row">
 		<div class="col-md-12 col-xs-12">
 			<div class="panel panel-primary">
+
 				<div class="panel-heading">
 					<select class="form-control">
 						<option>1º Semestre</option><option>2ºSemestre</option>
@@ -25,12 +26,12 @@
 				<table class="table table-striped">
 					<thead>
 						<th>Materias:</th>
-						<th><input type="date" name="segunda" class="form-control"><br>Segunda-Feira</th>
-						<th><input type="date" name="terca" class="form-control"><br>Terça-Feira</th>
-						<th><input type="date" name="quarta" class="form-control"><br>Quarta-Feira</th>
-						<th><input type="date" name="quinta" class="form-control"><br>Quinta-Feira</th>
-						<th><input type="date" name="sexta" class="form-control"><br>Sexta-Feira</th>
-						<th><input type="date" name="sabado" class="form-control"><br>Sabado</th>
+						<th><label>Segunda-Feira</label><input type="date" name="segunda" class="form-control"></th>
+						<th><label>Terça-Feira</label><input type="date" name="terca" class="form-control"></th>
+						<th><label>Quarta-Feira</label><input type="date" name="quarta" class="form-control"></th>
+						<th><label>Quinta-Feira</label><input type="date" name="quinta" class="form-control"></th>
+						<th><label>Sexta-Feira</label><input type="date" name="sexta" class="form-control"></th>
+						<th><label>Sabado</label><input type="date" name="sabado" class="form-control"></th>
 					</thead>
 
 					<tr>
@@ -72,9 +73,16 @@
 						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
 						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
 					</tr>
-
 				</table>
+			
 			</div>
+
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-3">
+					<button type="submit" name="Confirmar" class="btn btn-success col-md-12 col-xs-12">Confirmar</button>
+				</div>
+			</div>
+
 		</div>	
 	</div>
 
