@@ -28,9 +28,7 @@ Route::get('/agendadas', function () {
 	return view('alunos.agendadas');
 });
 
-Route::get('/agendamento', function () {
-	return view('alunos.agendamento');
-});
+Route::get('/agendamento','usuarios\alunos\AlunoController@listarAvaliacoes');
 
 //Area do admin
 Route::get('/provas', function(){
