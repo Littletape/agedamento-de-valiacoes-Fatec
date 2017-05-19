@@ -3,71 +3,87 @@
 @section("conteudo")
 
 <form>
+
 	<div class="row">
-	<div class="col-md-8 col-md-offset-2 col-xs-12">
-		<form>
+		<div class="col-md-8 col-md-offset-2 col-xs-12">
+			<label>Selecione o Curso:</label>
+			<select class="form-control" placeholder='Selecione o Curso'>
+				<option>Curso1</option><option>Curso2</option>
+			</select>
+		</div>
+	</div><br>
+
+	<div class="row">
+		<div class="col-md-12 col-xs-12">
 			<div class="panel panel-primary">
-				<div class="panel-heading"><center><b>Semestre XX</b></center></div>
+				<div class="panel-heading">
+					<select class="form-control">
+						<option>1º Semestre</option><option>2ºSemestre</option>
+					</select>
+				</div>
+
 				<table class="table table-striped">
 					<thead>
-						<th colspan="7">Semana xx</th>
-					</thead>
-					<thead>
-						<th>Materia</th>
-						<th>xx/xx/xxxx<br>Segunda-Feira</th>
-						<th>xx/xx/xxxx<br>Terça-Feira</th>
-						<th>xx/xx/xxxx<br>Quarta-Feira</th>
-						<th>xx/xx/xxxx<br>Quinta-Feira</th>
-						<th>xx/xx/xxxx<br>Sexta-Feira</th>
-						<th>xx/xx/xxxx<br>Sabado</th>
+						<th>Materias:</th>
+						<th><input type="date" name="segunda" class="form-control"><br>Segunda-Feira</th>
+						<th><input type="date" name="terca" class="form-control"><br>Terça-Feira</th>
+						<th><input type="date" name="quarta" class="form-control"><br>Quarta-Feira</th>
+						<th><input type="date" name="quinta" class="form-control"><br>Quinta-Feira</th>
+						<th><input type="date" name="sexta" class="form-control"><br>Sexta-Feira</th>
+						<th><input type="date" name="sabado" class="form-control"><br>Sabado</th>
 					</thead>
 
 					<tr>
-						<td>YYYY</td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
+						<td>Aula 1</td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
 					</tr>
+
 					<tr>
-						<td>YYYY</td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
+						<td>Aula 2</td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
 					</tr>
+
 					<tr>
-						<td>YYYY</td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
+						<td>Aula 3</td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
 					</tr>
+
 					<tr>
-						<td>YYYY</td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
+						<td>Aula 4</td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
+						<td><select class="form-control"><option>Materia 1</option><option>Materia 2</option></select></td>
 					</tr>
+
 				</table>
-			</div>	
-		</form>
-	</div>	
-</div>
+			</div>
+		</div>	
+	</div>
+
 </form>
 
 <style type="text/css">
 	th, td{text-align: center}
-	input{width: 20px; height: 20px;}
+	/*input{width: 20px; height: 20px;}*/
+	.form-control{border-color: grey;}
 </style>
 
 @endsection
