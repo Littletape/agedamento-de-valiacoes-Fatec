@@ -90,7 +90,6 @@
 
 <style type="text/css">
 	th, td{text-align: center}
-	/*input{width: 20px; height: 20px;}*/
 	.form-control{border-color: grey;}
 </style>
 

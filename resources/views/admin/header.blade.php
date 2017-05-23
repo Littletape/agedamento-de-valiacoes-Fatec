@@ -26,7 +26,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="provas"><b>Definir Provas</b></a></li>
-					<li><a href="avaliar"><b>Avaliar Provas</b></a></li>
+					<li><a href="relatorio"><b>Gerar Relatorio</b></a></li>
 				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">

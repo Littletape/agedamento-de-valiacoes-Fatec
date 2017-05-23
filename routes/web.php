@@ -35,6 +35,6 @@ Route::get('/provas', function(){
 	return view('admin.provas');
 });
 
-Route::get('/avaliar', function(){
-	return view('admin.avaliar');
+Route::get('/relatorio', function(){
+	return view('admin.relatorio');
 });
