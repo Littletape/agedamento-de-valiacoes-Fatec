@@ -11,55 +11,15 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading"><center><b>Semestre XX</b></center></div>
 				<table class="table table-striped">
-					<thead>
-						<th colspan="7">Semana xx</th>
-					</thead>
-					<thead>
-						<th>Materia</th>
-						<th>xx/xx/xxxx<br>Segunda-Feira</th>
-						<th>xx/xx/xxxx<br>Terça-Feira</th>
-						<th>xx/xx/xxxx<br>Quarta-Feira</th>
-						<th>xx/xx/xxxx<br>Quinta-Feira</th>
-						<th>xx/xx/xxxx<br>Sexta-Feira</th>
-						<th>xx/xx/xxxx<br>Sabado</th>
-					</thead>
+					@forelse($semanas as semana)
 
-					<tr>
-						<td>YYYY</td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-					</tr>
-					<tr>
-						<td>YYYY</td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-					</tr>
-					<tr>
-						<td>YYYY</td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-					</tr>
-					<tr>
-						<td>YYYY</td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-						<td>Teste<br><input type="checkbox" name=""></td>
-					</tr>
+					@empty
+					<h2>Nenhuma avaliação cadastrada até o momento</h2>
+					@endforelse
+					<td>
+						<table> </table>
+					</td>
+					
 				</table>
 			</div>	
 		</form>

@@ -14,9 +14,16 @@ class AlunoController extends Controller
  
  public function listarAvaliacoes(Avaliacoes $avaliacoes, Semestre $semestre, Semana $semana){
 
- 		echo $avaliacoes->avaliacoesAgendadas;
- 		$Semestre = $semestre->all();
- 		$Semana = $semana->all();
+ 		$aval = $avaliacoes->avaliacoesAgendadas();
+ 		$semestres = $semestre->all();
+ 		$semanas = $semana->all();
+
+ 		echo "<pre>"; 
+ 			print_r($aval);
+ 		echo "<pre>";
+
+ 		// retorna a view de agendamento de avaliacoes
+ 		// return view('alunos.agendamento',compact('aval','semestres','semanas'));
  }
 
  }
