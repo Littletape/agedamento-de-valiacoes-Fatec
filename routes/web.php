@@ -38,3 +38,7 @@ Route::get('/provas', function(){
 Route::get('/relatorio', function(){
 	return view('admin.relatorio');
 });
+
+Route::get('/relatoriogerado', function(){
+	return view('admin.relatoriogerado');
+});
