@@ -18,12 +18,12 @@ class AlunoController extends Controller
  		$semestres = $semestre->all();
  		$semanas = $semana->all();
 
- 		echo "<pre>"; 
- 			print_r($aval);
- 		echo "<pre>";
+ 		// echo "<pre>"; 
+ 		// 	print_r($aval);
+ 		// echo "<pre>";
 
  		// retorna a view de agendamento de avaliacoes
- 		// return view('alunos.agendamento',compact('aval','semestres','semanas'));
+ 		return view('alunos.agendamento',compact('aval','semestres','semanas'));
  }
 
  }
