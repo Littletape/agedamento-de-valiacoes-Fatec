@@ -20,7 +20,7 @@ class Avaliacoes extends Model
 
     public function avaliacoesAgendadas(){
 
-    	$dados = DB::table('avaliacoes')->select('avaliacoes.id','avaliacoes.data','semestre_avaliacoes.semestre','semanas_avaliacoes.semana','avaliacoes.dia','avaliacoes.pdf_nome',DB::raw('(SELECT nome from materias where id = avaliacoes.materia_id) as materia1' ), DB::raw('(SELECT nome from materias where id = avaliacoes.materia2_id) as materia2' ))
+    	$dados = DB::table('avaliacoes')->select('avaliacoes.id','avaliacoes.data','semestre_avaliacoes.semestre','semanas_avaliacoes.semana','avaliacoes.dia','avaliacoes.pdf_nome','avaliacoes.semana_id','avaliacoes.semestre_id',DB::raw('(SELECT nome from materias where id = avaliacoes.materia_id) as materia1' ), DB::raw('(SELECT nome from materias where id = avaliacoes.materia2_id) as materia2' ))
     	->join('semestre_avaliacoes','avaliacoes.semestre_id','semestre_avaliacoes.id')
     	->join('semanas_avaliacoes','avaliacoes.semana_id','semanas_avaliacoes.id')
     	
