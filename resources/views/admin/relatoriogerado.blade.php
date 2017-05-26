@@ -6,26 +6,51 @@
 </head>
 <body>
 
-<center>
+<center><h1>Relatório</h1></center>
 
-<h1>Relatório</h1>
+<table align="center">
+<tr>
+<th>Usuario: xxxxxxxx</th>
+<th>Data: xx/xx/xxxx</th>
+<th>Horario: xx:xx:xx</th>
+</tr>
+</table>
 
-<div>
-<span>Usuario: xxxxxxxx</span>
-<span>Data: xx/xx/xxxx</span>
-<span>Horario: xx:xx:xx</span>
-</div>
 <br>
 
-<table id="tabela">
+<table align="center">
 <tr>
-<th width="5%">N°</th>
-<th width="20%">Curso</th>
-<th width="20%">Sem.</th>
-<th width="20%">Materia</th>
-<th width="20%">Aluno</th>
-<th width="10%">Nota</th>
+<th>N°</th>
+<th>Curso</th>
+<th>Sem.</th>
+<th>Materia</th>
+<th>Aluno</th>
+<th>Nota</th>
 </tr>
+
+<tr id="par"><td>xx</td><td>Curso 1</td><td>1° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+
+<tr><td>xx</td><td>Curso 1</td><td>1° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+
+<tr id="par"><td>xx</td><td>Curso 1</td><td>2° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+<tr><td>xx</td><td>Curso 1</td><td>2° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+
+<tr id="par"><td>xx</td><td>Curso 1</td><td>3° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx
+</td></tr>
+
+<tr><td>xx</td><td>Curso 1</td><td>3° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+
+<tr id="par"><td>xx</td><td>Curso 2</td><td>1° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+
+<tr><td>xx</td><td>Curso 2</td><td>1° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+
+<tr id="par"><td>xx</td><td>Curso 2</td><td>2° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+
+<tr><td>xx</td><td>Curso 2</td><td>2° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+
+<tr id="par"><td>xx</td><td>Curso 2</td><td>3° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+
+<tr><td>xx</td><td>Curso 2</td><td>3° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
 
 <tr id="par"><td>xx</td><td>Curso 1</td><td>1° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
 
@@ -52,13 +77,10 @@
 <tr><td>xx</td><td>Curso 2</td><td>3° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
 </table>
 
-</center>
-
 </body>
 
 <style type="text/css">
-	td{text-align: center; border: none;}
-	#tabela{border: none;}
-	#par{background-color: green; border-style: none;}
+	td, th{text-align: center;}
+	#par{background-color: green; border: none;}
 </style>
 </html>

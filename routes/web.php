@@ -39,6 +39,4 @@ Route::get('/relatorio', function(){
 	return view('admin.relatorio');
 });
 
-Route::get('/relatoriogerado', function(){
-	return view('admin.relatoriogerado');
-});
+Route::get('/relatoriogerado', 'usuarios\admin\AdminController@relatorioGerado');
