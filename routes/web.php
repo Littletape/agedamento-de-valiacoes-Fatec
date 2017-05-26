@@ -30,6 +30,8 @@ Route::get('/agendadas', function () {
 
 Route::get('/agendamento','usuarios\alunos\AlunoController@listarAvaliacoes');
 
+Route::get('/agendar/{materia_id}/{id}/{status}', 'usuarios\alunos\avaliacao\AvalController@agendarAvaliacao');
+
 //Area do admin
 Route::get('/provas', function(){
 	return view('admin.provas');

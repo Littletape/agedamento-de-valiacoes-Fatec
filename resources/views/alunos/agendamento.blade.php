@@ -28,16 +28,23 @@
 
 												<th>{{$avaliacoes->data}}</th>
 												<tr><td>{{$avaliacoes->dia}}</td></tr>
+
 												@if($avaliacoes->materia1 != '')
-												<tr><td>{{$avaliacoes->materia1}} <span><input style="float: right;" type="checkbox" name=""></span></td></tr>
-												@else
-												<tr><td>{{$avaliacoes->materia1}}</td></tr>
+													@if($avaliacoes->avaAgendada_id != '' and $avaliacoes->materiaAgendada == $avaliacoes->materia_id and $avaliacoes->usuario_id == $idUsu)
+
+													<tr><td>{{$avaliacoes->materia1}} <span><input style="float: right;" type="checkbox" id="{{$avaliacoes->id}}" materia_id="{{$avaliacoes->materia_id}}" class="agendar" checked="true" name="materia1"></span></td></tr>
+													@else
+														<tr><td>{{$avaliacoes->materia1}} <span><input style="float: right;" type="checkbox" id="{{$avaliacoes->id}}" materia_id="{{$avaliacoes->materia_id}}" class="agendar"  name="materia1"></span></td></tr>
+													@endif
 												@endif
 
 												@if($avaliacoes->materia2 != '')
-												<tr><td>{{$avaliacoes->materia2}} <span><input style="float: right;" type="checkbox" name=""></span></td></tr>
-												@else
-												<tr><td>{{$avaliacoes->materia2}}</td></tr>
+												@if($avaliacoes->avaAgendada_id != '' and $avaliacoes->materiaAgendada == $avaliacoes->materia2_id and $avaliacoes->usuario_id == $idUsu)
+
+													<tr><td>{{$avaliacoes->materia2}} <span><input style="float: right;" type="checkbox" id="{{$avaliacoes->id}}" materia_id="{{$avaliacoes->materia2_id}}" class="agendar" checked="true" name="materia2"></span></td></tr>
+													@else
+														<tr><td>{{$avaliacoes->materia2}} <span><input style="float: right;" type="checkbox" id="{{$avaliacoes->id}}" materia_id="{{$avaliacoes->materia2_id}}" class="agendar"  name="materia2"></span></td></tr>
+													@endif
 												@endif
 												
 											</table>
@@ -73,5 +80,22 @@
 	th, td{text-align: center}
 	input{width: 20px; height: 20px;}
 </style>
+
+<script type="text/javascript">
+	
+	$(document).on('click','.agendar',function(){
+		// vierifica quais checkbox foram selecionados
+		var env = {};
+		env.materia_id = $(this).attr('materia_id');
+		env.id = $(this).attr('id');
+		env.status = $(this).is(":checked");
+		console.log(env);
+		// envia o array com os chekbox por get
+		$.get('/agendar/'+env.materia_id+'/'+env.id+'/'+env.status, function(env){
+			console.log('sucesso');
+		});	
+
+	});
+</script>
 
 @endsection
