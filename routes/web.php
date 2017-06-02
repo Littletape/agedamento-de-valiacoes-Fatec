@@ -24,13 +24,11 @@ Route::get('/logout','PessoasController@logout');  //COntroller Login
 
 // });
 
-Route::get('/agendadas', function () {
-	return view('alunos.agendadas');
-});
-
-Route::get('/agendamento','usuarios\alunos\AlunoController@listarAvaliacoes');
+Route::get('/agendadas','usuarios\alunos\AlunoController@avaliacoesAgendadas' );
 
 Route::get('/agendar/{materia_id}/{id}/{status}', 'usuarios\alunos\avaliacao\AvalController@agendarAvaliacao');
+
+Route::get('/agendamento','usuarios\alunos\avaliacao\AvalController@listarAvaliacoes');
 
 //Area do admin
 Route::get('/provas', function(){
