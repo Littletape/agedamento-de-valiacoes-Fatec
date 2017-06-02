@@ -5,7 +5,7 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2 col-xs-12">
 		<div class="panel panel-primary">
-			<div class="panel-heading"><center><b>Avaliações Agendadas para hoje</b></center></div>
+			<div class="panel-heading"><center><b>Avaliações Agendadas</b></center></div>
 
 			<table class="table table-striped">
 				<thead>
@@ -13,35 +13,19 @@
 					<th>Data</th>
 					<th>Ações</th>
 				</thead>
-
-				<tr>
-					<td>XXXXX</td><td>XX/xx/xxxx</td>
+				@forelse($result as $avaliacao)
+					<tr>
+					<td>{{$avaliacao->nome}}</td><td>{{$avaliacao->data}}</td>
 					<td>
-						<button class="btn btn-success">Ver Prova</button>
-						<button class="btn btn-danger">Cancelar Agendamento</button>
+						<button pdfNome='{{$avaliacao->pdf_nome}}' id='{{$avaliacao->id}}' class="btn btn-success">Ver Prova</button>
+						<button class="btn btn-danger" id='{{$avaliacao->id}}'>Cancelar Agendamento</button>
 					</td>
 				</tr>
-				<tr>
-					<td>XXXXX</td><td>XX/xx/xxxx</td>
-					<td>
-						<button class="btn btn-success">Ver Prova</button>
-						<button class="btn btn-danger">Cancelar Agendamento</button>
-					</td>
-				</tr>
-				<tr>
-					<td>XXXXX</td><td>XX/xx/xxxx</td>
-					<td>
-						<button class="btn btn-success">Ver Prova</button>
-						<button class="btn btn-danger">Cancelar Agendamento</button>
-					</td>
-				</tr>
-				<tr>
-					<td>XXXXX</td><td>XX/xx/xxxx</td>
-					<td>
-						<button class="btn btn-success">Ver Prova</button>
-						<button class="btn btn-danger">Cancelar Agendamento</button>
-					</td>
-				</tr>
+				@empty
+					<h3>Nenhuma matéria agendada até o momento</h3>
+				@endforelse
+				
+				
 			</table>
 		</div>
 	</div>
