@@ -20,16 +20,16 @@ class Avaliacoes extends Model
 
     public function avaliacoesCadastradas(){
 
-    	$dados = DB::table('avaliacoes')->select('avaliacoes_agendadas.usuario_id','avaliacoes_agendadas.avaliacoes_id as avaAgendada_id','avaliacoes_agendadas.materia_id as materiaAgendada','avaliacoes.id','avaliacoes.data','semestre_avaliacoes.semestre','semanas_avaliacoes.semana','avaliacoes.materia_id','avaliacoes.materia2_id','avaliacoes.dia','avaliacoes.pdf_nome','avaliacoes.semana_id','avaliacoes.semestre_id',DB::raw('(SELECT nome from materias where id = avaliacoes.materia_id) as materia1' ), DB::raw('(SELECT nome from materias where id = avaliacoes.materia2_id) as materia2' ))
-    	->join('semestre_avaliacoes','avaliacoes.semestre_id','semestre_avaliacoes.id')
-    	->join('semanas_avaliacoes','avaliacoes.semana_id','semanas_avaliacoes.id')
-    	->leftjoin('avaliacoes_agendadas','avaliacoes.id','avaliacoes_agendadas.avaliacoes_id')
-    	->orderBy('avaliacoes.data')
+    	
+    	$dados = DB::table('avaliacoes as a')->select('a.dia','ag.usuario_id','ag.avaliacoes_id as avaAgendada_id','ag.materia_id as materiaAgendada','a.id','a.data','sme.semestre','sma.semana','a.materia_id','a.pdf_nome','a.semana_id','a.semestre_id','m.nome')
+    	->join('semestre_avaliacoes as sme','a.semestre_id','sme.id')
+    	->join('semanas_avaliacoes as sma','a.semana_id','sma.id')
+    	->join('materias as m','a.materia_id','m.id')
+    	->leftjoin('avaliacoes_agendadas as ag','a.id','ag.avaliacoes_id')
+    	->orderBy('a.data')
     	->distinct()
-    	
-    	
     	->get();
-
+    	    	
     	if(!empty($dados) ){
     		$avaliacoesAg = $dados;
     		return $avaliacoesAg;
