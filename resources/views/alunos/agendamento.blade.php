@@ -20,52 +20,54 @@
 							
 
 							<tr style="background-color: white">
-								@forelse($aval as $avaliacoes)
+								@forelse($aval as $key => $avaliacoes)
 									@if($semana->id == $avaliacoes->semana_id and $semestre->id == $avaliacoes->semestre_id )
-										
-										<td>
-											<table class="table">
-
-												<th>{{$avaliacoes->data}}</th>
-												<tr><td>{{$avaliacoes->dia}}</td></tr>
-
-												@if($avaliacoes->materia1 != '')
-													@if($avaliacoes->avaAgendada_id != '' and $avaliacoes->materiaAgendada == $avaliacoes->materia_id and $avaliacoes->usuario_id == $idUsu)
-
-													<tr><td>{{$avaliacoes->materia1}} <span><input style="float: right;" type="checkbox" id="{{$avaliacoes->id}}" materia_id="{{$avaliacoes->materia_id}}" class="agendar" checked="true" name="materia1"></span></td></tr>
-													@else
-														<tr><td>{{$avaliacoes->materia1}} <span><input style="float: right;" type="checkbox" id="{{$avaliacoes->id}}" materia_id="{{$avaliacoes->materia_id}}" class="agendar"  name="materia1"></span></td></tr>
-													@endif
-												@endif
-
-												@if($avaliacoes->materia2 != '')
-												@if($avaliacoes->avaAgendada_id != '' and $avaliacoes->materiaAgendada == $avaliacoes->materia2_id and $avaliacoes->usuario_id == $idUsu)
-
-													<tr><td>{{$avaliacoes->materia2}} <span><input style="float: right;" type="checkbox" id="{{$avaliacoes->id}}" materia_id="{{$avaliacoes->materia2_id}}" class="agendar" checked="true" name="materia2"></span></td></tr>
-													@else
-														<tr><td>{{$avaliacoes->materia2}} <span><input style="float: right;" type="checkbox" id="{{$avaliacoes->id}}" materia_id="{{$avaliacoes->materia2_id}}" class="agendar"  name="materia2"></span></td></tr>
-													@endif
-												@endif
-												
-											</table>
-										</td>
-										
-										
-									@endif
 									
+										@if($key < 1)
+										<td>
+										<table class="table">
+											<th>{{$avaliacoes->data}}</th>
+											<tr><td>{{$avaliacoes->dia}}</td></tr>
+											@foreach($aval as $indice => $info)
+												@if($avaliacoes->data == $info->data)
+													@if($info->avaAgendada_id != '' and $info->materiaAgendada == $info->materia_id and $info->usuario_id == $idUsu)
+													<tr><td>{{$info->nome}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" checked="true"   name="materia"></span></td></tr>
 
+													@else
+													<tr><td>{{$info->nome}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar"  name="materia"></span></td></tr>
+													@endif
+												@endif
+											@endforeach
+										</table>
+										</td>
+										@elseif($aval[$key - 1]->data != $avaliacoes->data)
+										<td>
+										<table class="table">
+											<th>{{$avaliacoes->data}}</th>
+											<tr><td>{{$avaliacoes->dia}}</td></tr>
+											@foreach($aval as $indice => $info)
+												@if($avaliacoes->data == $info->data)
+													@if($info->avaAgendada_id != '' and $info->materiaAgendada == $avaliacoes->materia_id and $info->usuario_id == $idUsu)
+													<tr><td>{{$info->nome}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" checked="true"  name="materia"></span></td></tr>
+
+													@else
+													<tr><td>{{$info->nome}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar"   name="materia"></span></td></tr>
+													@endif
+												@endif
+											@endforeach
+										</table>
+										</td>	
+										@endif
+													
+									@endif
 								@empty
 								<tr><td>Não tem avaliação cadastrado nessa semana</td></tr>
 								@endforelse
 							</tr>
 
-
-
 							@empty
 							<tr><td>Não tem avaliação cadastrado nessa semana</td></tr>
 							@endforelse
-
-
 						</table>
 
 					</div>
