@@ -29,7 +29,7 @@ class Avaliacoes extends Model
     	->orderBy('a.data')
     	->distinct()
     	->get();
-    	    	
+
     	if(!empty($dados) ){
     		$avaliacoesAg = $dados;
     		return $avaliacoesAg;
@@ -37,6 +37,25 @@ class Avaliacoes extends Model
     		echo 'erro ao fazer a busca';
     	}
     	
+    }
+
+    public function avaliacoesAgendadas(){
+
+    	$idUsu = session()->get('id');
+	 	
+	 	$result = DB::table('avaliacoes_agendadas AS ag')->select('m.nome','a.data','a.id','a.pdf_nome')
+	 	->join('avaliacoes AS a','ag.avaliacoes_id','a.id')
+	 	->join('materias as m','m.id','a.materia_id')
+	 	->where('ag.usuario_id',$idUsu)
+	 	->orderBy('a.data')
+	 	->get();
+
+	 	if(!empty($result) ){
+    		return $result;
+    	}else{
+    		echo 'erro ao fazer a busca';
+    	}
+
     }
 
 
