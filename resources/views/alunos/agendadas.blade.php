@@ -22,7 +22,7 @@
 					</td>
 				</tr>
 				@empty
-					<h3>Nenhuma matéria agendada até o momento</h3>
+					<h4 style="text-align: center;">Nenhuma matéria agendada até o momento</h4>
 				@endforelse
 				
 				

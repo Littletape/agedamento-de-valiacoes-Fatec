@@ -28,12 +28,12 @@ Route::get('/agendadas','usuarios\alunos\AlunoController@avaliacoesAgendadas' );
 
 Route::get('/agendar/{materia_id}/{id}/{status}', 'usuarios\alunos\avaliacao\AvalController@agendarAvaliacao');
 
-Route::get('/agendamento','usuarios\alunos\avaliacao\AvalController@listarAvaliacoes');
+Route::get('/agendamento','usuarios\alunos\avaliacao\AvalController@listarAvaliacoes')->name('agendar');
 
 //Area do admin
-Route::get('/provas', function(){
-	return view('admin.provas');
-});
+Route::get('/definirProvas','usuarios\alunos\avaliacao\AvalController@listarAvaliacoes')->name('avaliacoes');
+
+Route::post('/cadastrar/avaliacao','usuarios\alunos\avaliacao\AvalController@cadastrarAvaliacao')->name('cadAvaliacao');
 
 Route::get('/relatorio', function(){
 	return view('admin.relatorio');

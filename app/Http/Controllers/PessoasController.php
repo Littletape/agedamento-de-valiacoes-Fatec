@@ -25,6 +25,7 @@ class PessoasController extends Controller
 				$request->session()->put('senha',$usuario['senha']);
 				$request->session()->put('nome',$usuario['nome']);
 				$request->session()->put('permissao_id',$usuario['permissao_id']);
+				$request->session()->put('semestre_id',$usuario['semestre_id']);
 				$request->session()->put('logado',true);
 				return redirect('/agendadas');
 			}else{
