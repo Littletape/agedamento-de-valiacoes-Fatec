@@ -17,7 +17,9 @@
 					<tr>
 					<td>{{$avaliacao->nome}}</td><td>{{$avaliacao->data}}</td>
 					<td>
-						<button pdfNome='{{$avaliacao->pdf_nome}}' id='{{$avaliacao->id}}' class="btn btn-success verPdf">Ver Prova</button>
+						<!--a href="provas/{{$avaliacao->pdf_nome}}" class="btn btn-success verPdf" target="_blank">Ver Prova</a-->
+						<a href="{{asset('provas/'.$avaliacao->pdf_nome)}}" class="btn btn-success verPdf" target="_blank">Ver Prova</a>
+						<!--button pdfNome='{{$avaliacao->pdf_nome}}' id='{{$avaliacao->id}}' class="btn btn-success verPdf">Ver Prova</button-->
 						<button class="btn btn-danger" id='{{$avaliacao->id}}'>Cancelar Agendamento</button>
 					</td>
 				</tr>
