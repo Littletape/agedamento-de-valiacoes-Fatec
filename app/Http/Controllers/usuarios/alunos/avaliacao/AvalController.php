@@ -5,6 +5,7 @@ namespace App\Http\Controllers\usuarios\alunos\avaliacao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Response;
 use App\model\AvaliacaoAgendada;
 use App\Model\Avaliacoes;
 use App\Model\Semestre;
@@ -65,5 +66,15 @@ class AvalController extends Controller
 			$avaliacao->where('avaliacoes_id', $id)->delete();
 
 		}
+	}
+
+	public function excluirAvaliacao($id,Avaliacoes $avaliacoes){
+		$delete = $avaliacoes->where('id', $id)->delete();
+
+		if($delete){
+			return Response::json($delete); 
+		}
+
+
 	}
 }

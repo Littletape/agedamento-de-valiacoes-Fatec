@@ -28,6 +28,8 @@ Route::get('/agendadas','usuarios\alunos\AlunoController@avaliacoesAgendadas' );
 
 Route::get('/agendar/{materia_id}/{id}/{status}', 'usuarios\alunos\avaliacao\AvalController@agendarAvaliacao');
 
+Route::get('/excluir/avaliacao/{id}', 'usuarios\alunos\avaliacao\AvalController@excluirAvaliacao');
+
 Route::get('/agendamento','usuarios\alunos\avaliacao\AvalController@listarAvaliacoes')->name('agendar');
 
 //Area do admin

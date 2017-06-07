@@ -6,6 +6,25 @@
 <form action="{{route('cadAvaliacao')}}" method="POST" accept-charset="utf-8">
 {!!csrf_field()!!}
 	<div class="row">
+
+		<div class="modal fade" id="modalPdf" tabindex="1" role="dialog">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">Modal title</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>One fine body&hellip;</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
 		@if(isset($_GET['msg']))
 			
 				@if($_GET['msg'] == 1)
@@ -31,6 +50,7 @@
 			</select>	
 			</select>
 		</div>
+
 		<div class="col-md-3 col-xs-12">
 			<label>Selecione o semestre:</label>
 			<select name="semestre_id" required class="form-control" placeholder='Selecione o Curso'>
@@ -81,7 +101,7 @@
 
 <div class="row">
 	<div class="col-md-10 col-md-offset-1 col-xs-12">
-		
+
 		<div class="col-md-10 col-md-offset-1 col-xs-12">
 
 		@forelse($semestres as $semestre)	
@@ -92,45 +112,41 @@
 
 					@forelse($semanas as $semana)
 					<th colspan="{{$aval->count()}}">Semana {{$semana->semana}}</th>
+						<tr><th>Curso</th><th>Data</th><th>dia</th><th>Materia</th><th>PDF</th><th colspan="2">Ações</th></tr>
 
+					
+						@forelse($aval as $key => $avaliacao)
+						@if($semana->id == $avaliacao->semana_id and $semestre->semestre == $avaliacao->semestre_id )
+							<tr style="background-color: white">
+								<td>{{$avaliacao->nomeCurso}}</td>
+								<td>{{$avaliacao->data}}</td>
+								<td>{{$avaliacao->dia}}</td>
+								<td>{{$avaliacao->nome}}</td>
+								@if($avaliacao->pdf_nome == '')
+								<td><span style="color: red" class="glyphicon glyphicon-thumbs-down"></span></td>
+								<td>
+									<button id='{{$avaliacao->id}}' class="btn btn-danger delAva glyphicon glyphicon-trash"></button>
+								</td>
+								<td>
+									<button class="btn btn-primary envPdf" id='{{$avaliacao->id}}'>Enviar PDF</button>
+								</td>
+								@else
+								<td>{{$avaliacao->pdf_nome}}</td>
+								<td>
+									<button id='{{$avaliacao->id}}' class="btn btn-danger delAva glyphicon glyphicon-trash"></button>
+									
+								</td>
+								<td></td>
+								@endif
+								
 
-					<tr style="background-color: white">
-						@forelse($aval as $key => $avaliacoes)
-						@if($semana->id == $avaliacoes->semana_id and $semestre->semestre == $avaliacoes->semestre_id )
-
-						@if($key < 1)
-						<td>
-							<table class="table">
-								<th>{{$avaliacoes->data}}</th>
-								<tr><td>{{$avaliacoes->dia}}</td></tr>
-									@foreach($aval as $indice => $info)
-										@if($avaliacoes->data == $info->data and $info->semana == $avaliacoes->semana and $info->semestre == $avaliacoes->semestre)
-										
-											<tr><td>{{$info->nome}}</td></tr>
-										@endif											
-									@endforeach
-							</table>
-						</td>
-						@elseif($aval[$key - 1]->data != $avaliacoes->data)
-						<td>
-							<table class="table">
-								<th>{{$avaliacoes->data}}</th>
-								<tr><td>{{$avaliacoes->dia}}</td></tr>
-									@foreach($aval as $indice => $info)
-										@if($avaliacoes->data == $info->data and $info->semana == $avaliacoes->semana and $info->semestre == $avaliacoes->semestre)
-										
-											<tr><td>{{$info->nome}}</td></tr>
-										@endif											
-									@endforeach
-							</table>
-						</td>
+							</tr>
 						@endif
-
-						@endif
+						
 						@empty
 						<tr><td>Não tem avaliação cadastrado nessa semana</td></tr>
 						@endforelse
-					</tr>
+					
 
 					@empty
 					<tr><td>Não tem avaliação cadastrado nessa semana</td></tr>
@@ -146,6 +162,45 @@
 		
 	</div>	
 </div>
+
+<script type="text/javascript">
+	
+	$(document).on('click','.delAva',function(){
+		// vierifica quais checkbox foram selecionados
+		var env = {};
+		env.id = $(this).attr('id');
+
+		var mae = $(this).parent().parent();
+		
+		console.log(mae);
+
+		var resposta = confirm('Clique em OK para confirmar a exclusão');
+
+		if(resposta == true ){
+			// envia o array com os chekbox por get
+			$.get('/excluir/avaliacao/'+env.id, function(env){
+				if(env == true && env == 'erro'){
+					alert('Ocorreu um erro ao excluir a avaliação, operação cancelada');
+				}else{
+					console.log(env);
+					mae.css( "display", "none" );
+				}
+				
+				
+			});	
+		}
+
+		
+
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).on('click','.envPdf', function(){
+		console.log('teste');
+		$('#modalPdf').modal();
+	});
+</script>
 
 <style type="text/css">
 	th, td{text-align: center}
