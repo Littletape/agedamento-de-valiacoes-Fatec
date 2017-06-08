@@ -32,6 +32,8 @@ Route::get('/excluir/avaliacao/{id}', 'usuarios\alunos\avaliacao\AvalController@
 
 Route::get('/agendamento','usuarios\alunos\avaliacao\AvalController@listarAvaliacoes')->name('agendar');
 
+Route::get('provas/pdf', 'usuarios\alunos\avaliacao\AvalController@verPdf')->name('verProva');
+
 //Area do admin
 Route::get('/definirProvas','usuarios\alunos\avaliacao\AvalController@listarAvaliacoes')->name('avaliacoes');
 

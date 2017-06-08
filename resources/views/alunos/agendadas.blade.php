@@ -17,10 +17,12 @@
 					<tr>
 					<td>{{$avaliacao->nome}}</td><td>{{$avaliacao->data}}</td>
 					<td>
-						<!--a href="provas/{{$avaliacao->pdf_nome}}" class="btn btn-success verPdf" target="_blank">Ver Prova</a-->
-						<a href="{{asset('provas/'.$avaliacao->pdf_nome)}}" class="btn btn-success verPdf" target="_blank">Ver Prova</a>
-						<!--button pdfNome='{{$avaliacao->pdf_nome}}' id='{{$avaliacao->id}}' class="btn btn-success verPdf">Ver Prova</button-->
+						<form action="provas/pdf" method="get" style="display: inline-block;">
+							<button type="submit" value='{{$avaliacao->pdf_nome}}' name="verProva" class="btn btn-success verPdf">Download Prova</button>
+						</form>
+						
 						<button class="btn btn-danger" id='{{$avaliacao->id}}'>Cancelar Agendamento</button>
+						
 					</td>
 				</tr>
 				@empty

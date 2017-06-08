@@ -77,4 +77,11 @@ class AvalController extends Controller
 
 
 	}
+
+	public function verPdf(Request $request){
+		$pdf_nome = $request->get('verProva');
+		//return $pdf_nome;
+		$file = $pdf_nome;
+		return Response::download('provas/'.$file);
+	}
 }
