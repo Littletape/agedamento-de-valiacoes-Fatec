@@ -6,24 +6,30 @@
 <form action="{{route('cadAvaliacao')}}" method="POST" accept-charset="utf-8">
 {!!csrf_field()!!}
 	<div class="row">
+	
+		<!-- Modal -->
+		<div id="modalPdf" class="modal fade" role="dialog" tabindex="1">
+			<div class="modal-dialog">
 
-		<div class="modal fade" id="modalPdf" tabindex="1" role="dialog">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">Modal title</h4>
-			      </div>
-			      <div class="modal-body">
-			        <p>One fine body&hellip;</p>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
-			      </div>
-			    </div><!-- /.modal-content -->
-			  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Modal Header</h4>
+					</div>
+					<div class="modal-body">
+						<p>One fine body&hellip;</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- Fim Modal -->
+
 
 		@if(isset($_GET['msg']))
 			
@@ -206,6 +212,7 @@
 	th, td{text-align: center}
 	.form-control{border-color: grey;}
 	td>input{width: 20px; height: 20px}
+	.modal-backdrop {z-index: -1;}
 </style>
 
 @endsection
