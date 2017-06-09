@@ -4,47 +4,75 @@
 
 <div class="row">
 
-	<div class="col-md-4">
+	<form method="get" action="/relatorio/agendadasHoje">
+	<div class="col-md-3">
 		<div class="panel panel-primary"> <!--style="border-radius:50px"-->
 			<div class="panel panel-heading">Provas agendadas para hoje</div>
 			<div class="panel-body">
 				<h4>Formato: .pdf <img src="images/pdfIco.png"></h4>
 				<h4>Conteudo do arquivo:</h4>
-				<p>Data, Semestre, Materia, Nome do Aluno</p>						
+				<p>Data, Semestre, Materia, Aluno</p>						
 			</div>
 			<div class="panel-footer">
-				<center><a href="">Download<br><span class="glyphicon glyphicon-download"> <b style="text-align: center;"></span></b></a></center>
+				<center>
+					<button type="submit" class="btn btn-primary">Download<br><span class="glyphicon glyphicon-download"></span></button>
+				</center>
 			</div>
 		</div>
-	</div> <!-- Div col-md-4-->
-
-	<div class="col-md-4">
+	</div> 	
+	</form>
+	
+	<form method="get" action="/relatorio/qtdHoje">
+	<div class="col-md-3">
 		<div class="panel panel-primary"> <!--style="border-radius:50px"-->
-			<div class="panel panel-heading">Confirmações de presença</div>
+			<div class="panel panel-heading">Qtd de provas agendas para hoje</div>
 			<div class="panel-body">
-				<h4>Formato: .xls (excel)<img src="images/exelIco.png"></h4>
+				<h4>Formato: .pdf <img src="images/pdfIco.png"></h4>
 				<h4>Conteudo do arquivo:</h4>
-				<p>Data, Semestre, Materia, Nome do Aluno</p>
+				<p>Data, Semestre, Materia, Qtd. Provas</p>
 			</div>
 			<div class="panel-footer">
-				<center><a href="">Download<br><span class="glyphicon glyphicon-download"> <b style="text-align: center;"></span></b></a></center>
+				<center>
+					<button type="submit" class="btn btn-primary">Download<br><span class="glyphicon glyphicon-download"></span></button>
+				</center>
 			</div>
 		</div>
-	</div> <!-- Div col-md-4-->
+	</div>
+	</form>
 
-	<div class="col-md-4">
+	<form method="get" action="/relatorio/qtdSemestre">
+	<div class="col-md-3">
 		<div class="panel panel-primary"> <!--style="border-radius:50px"-->
-			<div class="panel panel-heading">Relatorio Geral</div>
+			<div class="panel panel-heading">Provas agendadas no semestre</div>
 			<div class="panel-body">
-				<h4>Formato: .xls (excel)<img src="images/exelIco.png"></h4>
+				<h4>Formato: .pdf <img src="images/pdfIco.png"></h4>
 				<h4>Conteudo do arquivo:</h4>
-				<p>Data, semestre, materia, Nome do Aluno</p>
+				<p>Data, semestre, materia, Qtd. Provas</p>
 			</div>
 			<div class="panel-footer">
-				<center><a href="">Download<br><span class="glyphicon glyphicon-download"> <b style="text-align: center;"></span></b></a></center>
+				<center>
+					<button type="submit" class="btn btn-primary">Download<br><span class="glyphicon glyphicon-download"></span></button>
+				</center>
 			</div>
 		</div>
-	</div> <!-- Div col-md-4-->	
+	</div>	
+
+	<form method="get" action="/relatorio/agendadasSemestre">
+	<div class="col-md-3">
+		<div class="panel panel-primary"> <!--style="border-radius:50px"-->
+			<div class="panel panel-heading">Provas agendadas no semestre</div>
+			<div class="panel-body">
+				<h4>Formato: .pdf <img src="images/pdfIco.png"></h4>
+				<h4>Conteudo do arquivo:</h4>
+				<p>Data, semestre, materia, Aluno, nota</p>
+			</div>
+			<div class="panel-footer">
+				<center>
+					<button type="submit" class="btn btn-primary">Download<br><span class="glyphicon glyphicon-download"></span></button>
+				</center>
+			</div>
+		</div>
+	</div>
 
 </div>
 

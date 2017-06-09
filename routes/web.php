@@ -43,4 +43,12 @@ Route::get('/relatorio', function(){
 	return view('admin.relatorio');
 });
 
-Route::get('/relatoriogerado', 'usuarios\admin\AdminController@relatorioGerado');
+Route::get('/relatorio/agendadasHoje', 'usuarios\admin\AdminController@agendadasHoje');
+
+Route::get('/relatorio/qtdHoje', 'usuarios\admin\AdminController@qtdHoje');
+
+Route::get('/relatorio/qtdSemestre', 'usuarios\admin\AdminController@qtdSemestre');
+
+Route::get('/relatorio/agendadasSemestre', 'usuarios\admin\AdminController@agendadasSemestre');
+
+//Route::get('/relatoriogerado', 'usuarios\admin\AdminController@relatorioGerado');

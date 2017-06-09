@@ -6,81 +6,29 @@
 </head>
 <body>
 
-<center><h1>Relatório</h1></center>
+<center>
+	<h1 style="color: blue;">Relatório</h1>
+	<h3>Data: xx/xx/xxxx &nbsp; &nbsp; Horario: xx:xx:xx</h3>
+</center>
 
 <table align="center">
-<tr>
-<th>Usuario: xxxxxxxx</th>
-<th>Data: xx/xx/xxxx</th>
-<th>Horario: xx:xx:xx</th>
-</tr>
-</table>
-
-<br>
-
-<table align="center">
-<tr>
-<th>N°</th>
-<th>Curso</th>
-<th>Sem.</th>
-<th>Materia</th>
-<th>Aluno</th>
-<th>Nota</th>
+<tr style="background-color: blue; color: white;">
+<th>&nbsp; N° &nbsp;</th>
+<th>&nbsp; Data &nbsp;</th>
+<th>&nbsp; Sem. &nbsp;</th>
+<th>&nbsp; Materia &nbsp;</th>
+<th>&nbsp; Aluno &nbsp;</th>
+<th>&nbsp; Nota &nbsp;</th>
+<th>&nbsp; Qtd. &nbsp;</th>
 </tr>
 
-<tr id="par"><td>xx</td><td>Curso 1</td><td>1° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
+<tr><td>xx</td><td>Data 1</td><td>1° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td><td>xx</td></tr>
 
-<tr><td>xx</td><td>Curso 1</td><td>1° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 1</td><td>2° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-<tr><td>xx</td><td>Curso 1</td><td>2° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 1</td><td>3° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx
-</td></tr>
-
-<tr><td>xx</td><td>Curso 1</td><td>3° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 2</td><td>1° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr><td>xx</td><td>Curso 2</td><td>1° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 2</td><td>2° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr><td>xx</td><td>Curso 2</td><td>2° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 2</td><td>3° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr><td>xx</td><td>Curso 2</td><td>3° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 1</td><td>1° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr><td>xx</td><td>Curso 1</td><td>1° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 1</td><td>2° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-<tr><td>xx</td><td>Curso 1</td><td>2° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 1</td><td>3° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx
-</td></tr>
-
-<tr><td>xx</td><td>Curso 1</td><td>3° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 2</td><td>1° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr><td>xx</td><td>Curso 2</td><td>1° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 2</td><td>2° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr><td>xx</td><td>Curso 2</td><td>2° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr id="par"><td>xx</td><td>Curso 2</td><td>3° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-
-<tr><td>xx</td><td>Curso 2</td><td>3° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td></tr>
-</table>
+<tr><td>xx</td><td>Data 2</td><td>2° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td><td>xx</td></tr>
 
 </body>
 
 <style type="text/css">
-	td, th{text-align: center;}
-	#par{background-color: green; border: none;}
+	td{text-align: center; background-color: rgb(211,211,211);}
 </style>
 </html>
