@@ -30,14 +30,20 @@ Route::get('/agendar/{materia_id}/{id}/{status}', 'usuarios\alunos\avaliacao\Ava
 
 Route::get('/excluir/avaliacao/{id}', 'usuarios\alunos\avaliacao\AvalController@excluirAvaliacao');
 
-Route::get('/agendamento','usuarios\alunos\avaliacao\AvalController@listarAvaliacoes')->name('agendar');
+Route::get('/editar/materia/{id}/{materia_id}', 'usuarios\alunos\avaliacao\AvalController@editarAvaliacao');
 
-Route::get('provas/pdf', 'usuarios\alunos\avaliacao\AvalController@verPdf')->name('verProva');
+Route::get('/agendamento','usuarios\alunos\avaliacao\AvalController@listarAvaliacoes')->name('agendar');
 
 //Area do admin
 Route::get('/definirProvas','usuarios\alunos\avaliacao\AvalController@listarAvaliacoes')->name('avaliacoes');
+				
+Route::get('/buscar/materias','MateriaController@listarMaterias');
 
 Route::post('/cadastrar/avaliacao','usuarios\alunos\avaliacao\AvalController@cadastrarAvaliacao')->name('cadAvaliacao');
+
+Route::get('provas/pdf', 'usuarios\alunos\avaliacao\AvalController@verPdf')->name('verProva');
+
+Route::post('/upload','usuarios\alunos\avaliacao\AvalController@uploadPdf')->name('uploadPdf');
 
 Route::get('/relatorio', function(){
 	return view('admin.relatorio');
@@ -52,3 +58,4 @@ Route::get('/relatorio/qtdSemestre', 'usuarios\admin\AdminController@qtdSemestre
 Route::get('/relatorio/agendadasSemestre', 'usuarios\admin\AdminController@agendadasSemestre');
 
 //Route::get('/relatoriogerado', 'usuarios\admin\AdminController@relatorioGerado');
+

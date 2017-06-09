@@ -18,10 +18,10 @@
 					<td>{{$avaliacao->nome}}</td><td>{{$avaliacao->data}}</td>
 					<td>
 						<form action="provas/pdf" method="get" style="display: inline-block;">
-							<button type="submit" value='{{$avaliacao->pdf_nome}}' name="verProva" class="btn btn-success verPdf">Download Prova</button>
+							<button type="submit" value='{{$avaliacao->pdf_nome}}' name="verProva" class="btn btn-success verPdf glyphicon glyphicon-download"></button>
 						</form>
 						
-						<button class="btn btn-danger" id='{{$avaliacao->id}}'>Cancelar Agendamento</button>
+						<button class="btn btn-danger glyphicon glyphicon-trash rmAgen" id='{{$avaliacao->id}}'></button>
 						
 					</td>
 				</tr>
@@ -34,6 +34,31 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	
+	$(document).on('click','.rmAgen',function(){
+		// vierifica quais checkbox foram selecionados
+		var env = {};
+		env.materia_id = $(this).attr('materia_id');
+		env.id = $(this).attr('id');
+		env.status = 'false';
+
+		
+		console.log(env);
+		// envia o array com os chekbox por get
+		$.get('/agendar/'+env.materia_id+'/'+env.id+'/'+env.status, function(env){
+			if(env == true){
+			alert('Agendamento realizado com sucesso');
+		}else{
+			alert('Agendamento removido com sucesso');
+			location.reload();
+		}
+			
+		});	
+
+	});
+</script>
 
 <style type="text/css">
 	th, td{text-align: center}

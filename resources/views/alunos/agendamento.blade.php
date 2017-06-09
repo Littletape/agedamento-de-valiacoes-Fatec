@@ -32,10 +32,10 @@
 							@foreach($aval as $indice => $info)
 							@if($avaliacoes->data == $info->data)
 							@if($info->avaAgendada_id != '' and $info->materiaAgendada == $info->materia_id and $info->usuario_id == $idUsu)
-							<tr><td>{{$info->nome}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" checked="true"   name="materia"></span></td></tr>
+							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" checked="true"   name="materia"></span></td></tr>
 
 							@else
-							<tr><td>{{$info->nome}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar"  name="materia"></span></td></tr>
+							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar"  name="materia"></span></td></tr>
 							@endif
 							@endif
 							@endforeach
@@ -49,10 +49,10 @@
 							@foreach($aval as $indice => $info)
 							@if($avaliacoes->data == $info->data)
 							@if($info->avaAgendada_id != '' and $info->materiaAgendada == $avaliacoes->materia_id and $info->usuario_id == $idUsu)
-							<tr><td>{{$info->nome}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" checked="true"  name="materia"></span></td></tr>
+							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" checked="true"  name="materia"></span></td></tr>
 
 							@else
-							<tr><td>{{$info->nome}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar"   name="materia"></span></td></tr>
+							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar"   name="materia"></span></td></tr>
 							@endif
 							@endif
 							@endforeach
@@ -91,15 +91,15 @@
 		env.id = $(this).attr('id');
 		env.status = $(this).is(":checked");
 
-		if(env.status == true){
+		
+		console.log(env);
+		// envia o array com os chekbox por get
+		$.get('/agendar/'+env.materia_id+'/'+env.id+'/'+env.status, function(env){
+			if(env == true){
 			alert('Agendamento realizado com sucesso');
 		}else{
 			alert('Agendamento removido com sucesso');
 		}
-		console.log(env);
-		// envia o array com os chekbox por get
-		$.get('/agendar/'+env.materia_id+'/'+env.id+'/'+env.status, function(env){
-			console.log('sucesso');
 			
 		});	
 

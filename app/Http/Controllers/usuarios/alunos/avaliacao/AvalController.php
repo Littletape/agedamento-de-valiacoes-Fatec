@@ -11,6 +11,7 @@ use App\Model\Avaliacoes;
 use App\Model\Semestre;
 use App\Model\Semana;
 use App\Model\Curso;
+use App\Model\Materia;
 
 class AvalController extends Controller
 {
@@ -31,7 +32,13 @@ class AvalController extends Controller
 
 	}
 
-	public function listarAvaliacoes(Avaliacoes $avaliacoes, Semestre $semestre, Semana $semana, Curso $curso){
+	public function editarAvaliacao($id,$materia_id,Avaliacoes $avaliacao){
+		$resposta = $avaliacao->where('id',$id)->update(['materia_id' => $materia_id]);
+
+		return response::json($resposta);
+	}
+
+	public function listarAvaliacoes(Avaliacoes $avaliacoes, Semestre $semestre, Semana $semana, Curso $curso, Materia $materia){
 
 		$semanas = $semana->all();
 		$semestres = $semestre->all();
@@ -44,16 +51,16 @@ class AvalController extends Controller
 			$operador = '=';
 			$aval = $avaliacoes->avaliacoesCadastradas($operador,$semestre);
 		// retorna a view de agendamento de avaliacoes
-			return view('alunos.agendamento',compact('aval','semestre','semanas','idUsu'));	
+			return view('alunos.agendamento',compact('aval','semestre','semanas','idUsu'));
+		// se não retorna a view de cadastro das provas 		
 		}else{
+		$materias =  $materia->all();	
 		$semestre = 0;
 		$operador = '>=';
 		$aval = $avaliacoes->avaliacoesCadastradas($operador,$semestre);
 		$cursos = $curso->all();
-		return view('admin.provas',compact('aval','semestres','semanas','cursos'));
-		// echo '<pre>';
-		// print_r($aval);
-		// echo '<pre>';
+		return view('admin.provas',compact('aval','semestres','semanas','cursos','materias'));
+		
 		}
 	}
 
@@ -62,9 +69,12 @@ class AvalController extends Controller
 
 		if($status == 'true'){
 			$avaliacao->create(['avaliacoes_id' => $id, 'usuario_id' => $idUsu, 'materia_id' => $materia_id]);
+			$resposta = true;
+			return Response::json($resposta); 
 		}else{
 			$avaliacao->where('avaliacoes_id', $id)->delete();
-
+			$resposta = false;
+			return Response::json($resposta); 
 		}
 	}
 
@@ -83,5 +93,21 @@ class AvalController extends Controller
 		//return $pdf_nome;
 		$file = $pdf_nome;
 		return Response::download('provas/'.$file);
+	}
+
+	public function uploadPdf(Request $request, Avaliacoes $avaliacoes){
+		$pdf = $request->file('pdf');
+		$idAva = $request->idAva; 
+		
+		$destinationPath = public_path().DIRECTORY_SEPARATOR.'files/uploads';
+		if($pdf->isValid()){
+			$fileName = $pdf->getClientOriginalName();
+			$upload = $pdf->move($destinationPath, $fileName);
+
+			if($upload){
+				$avaliacoes->where('id',$idAva)->update(['pdf_nome' => $fileName]);
+				return redirect()->route('avaliacoes');
+			}
+		}	
 	}
 }
