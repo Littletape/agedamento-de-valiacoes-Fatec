@@ -96,7 +96,7 @@
 
 							<div class="row">
 								<div class="col-md-4 ">
-									<input required type="date" name="data" class="form-control">
+									<input required type="datetime-local" name="data" class="form-control">
 								</div>
 								
 								<div class="col-md-4">
@@ -179,7 +179,7 @@
 								<td>
 									<table class="table">
 									
-										<th colspan="2">{{$avaliacoes->data}}</th>
+										<th colspan="2">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $avaliacoes->data)->format('d-m-Y') }}</th>
 										<tr><td>{{$avaliacoes->dia}}</td></tr>
 									
 											@foreach($aval as $indice => $info)
@@ -221,7 +221,7 @@
 								<td>
 									<table class="table">
 									
-										<th colspan="2">{{$avaliacoes->data}}</th>
+										<th colspan="2">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $avaliacoes->data)->format('d-m-Y') }}</th>
 										<tr><td>{{$avaliacoes->dia}}</td></tr>
 									
 

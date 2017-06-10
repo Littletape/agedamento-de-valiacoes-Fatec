@@ -21,7 +21,6 @@ Route::post('/validacao','PessoasController@login');  //COntroller Login
 
 Route::get('/logout','PessoasController@logout');  //COntroller Login
 
-
 // });
 
 Route::get('/agendadas','usuarios\alunos\AlunoController@avaliacoesAgendadas' );
@@ -41,7 +40,7 @@ Route::get('/buscar/materias','MateriaController@listarMaterias');
 
 Route::post('/cadastrar/avaliacao','usuarios\alunos\avaliacao\AvalController@cadastrarAvaliacao')->name('cadAvaliacao');
 
-Route::get('provas/pdf', 'usuarios\alunos\avaliacao\AvalController@verPdf')->name('verProva');
+Route::post('/provas/pdf','usuarios\alunos\avaliacao\AvalController@verPdf')->name('verProva');
 
 Route::post('/upload','usuarios\alunos\avaliacao\AvalController@uploadPdf')->name('uploadPdf');
 

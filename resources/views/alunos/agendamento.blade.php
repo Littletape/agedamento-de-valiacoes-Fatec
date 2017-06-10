@@ -27,7 +27,7 @@
 					@if($key < 1)
 					<td>
 						<table class="table">
-							<th>{{$avaliacoes->data}}</th>
+							<th>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $avaliacoes->data)->format('d-m-Y') }}</th>
 							<tr><td>{{$avaliacoes->dia}}</td></tr>
 							@foreach($aval as $indice => $info)
 							@if($avaliacoes->data == $info->data)
@@ -44,7 +44,7 @@
 					@elseif($aval[$key - 1]->data != $avaliacoes->data)
 					<td>
 						<table class="table">
-							<th>{{$avaliacoes->data}}</th>
+							<th>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $avaliacoes->data)->format('d-m-Y') }}</th>
 							<tr><td>{{$avaliacoes->dia}}</td></tr>
 							@foreach($aval as $indice => $info)
 							@if($avaliacoes->data == $info->data)

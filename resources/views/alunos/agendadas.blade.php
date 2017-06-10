@@ -15,10 +15,13 @@
 				</thead>
 				@forelse($result as $avaliacao)
 					<tr>
-					<td>{{$avaliacao->nome}}</td><td>{{$avaliacao->data}}</td>
+					<td>{{$avaliacao->nome}}</td><td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $avaliacao->data)->format('d-m-Y') }}</td>
 					<td>
-						<form action="provas/pdf" method="get" style="display: inline-block;">
+						<form action="{{route('verProva')}}" method="POST" style="display: inline-block;">
+						{!!csrf_field()!!}
 							<button type="submit" value='{{$avaliacao->pdf_nome}}' name="verProva" class="btn btn-success verPdf glyphicon glyphicon-download"></button>
+							<input type="hidden" name="idAva" value="{{$avaliacao->id}}">
+							<input type="hidden" name="pdf_nome" value="{{$avaliacao->pdf_nome}}">
 						</form>
 						
 						<button class="btn btn-danger glyphicon glyphicon-trash rmAgen" id='{{$avaliacao->id}}'></button>

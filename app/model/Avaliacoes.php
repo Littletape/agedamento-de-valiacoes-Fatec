@@ -48,9 +48,10 @@ class Avaliacoes extends Model
         $idUsu = session()->get('id');
         $semestre = session()->get('semestre_id');
         
-        $result = DB::table('avaliacoes_agendadas AS ag')->select('m.nome','a.data','a.id','a.pdf_nome')
+        $result = DB::table('avaliacoes_agendadas AS ag')->select('m.nome','a.data','a.id','p.pdf_nome')
         ->join('avaliacoes AS a','ag.avaliacoes_id','a.id')
         ->join('materias as m','m.id','a.materia_id')
+        ->leftjoin('provas as p','a.prova_id','p.id')
         ->where('ag.usuario_id',$idUsu)
         ->where('a.semestre_id',$semestre)
         ->orderBy('a.data')

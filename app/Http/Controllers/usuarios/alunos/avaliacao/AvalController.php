@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\usuarios\alunos\avaliacao;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Response;
 use App\model\AvaliacaoAgendada;
 use App\Model\Avaliacoes;
@@ -30,6 +29,18 @@ class AvalController extends Controller
 			return redirect()->route('avaliacoes',compact('msg'));
 		}
 
+
+	}
+
+	public function verPdf(Request $request, Avaliacoes $avaliacao){
+		$idAva = $request->all();
+		$busca = $avaliacoes->find($idAva->idAva);
+		echo json_encode($busca);
+
+		$pdf_nome = $request->verProva;
+		return 'teste';
+		$file = $pdf_nome;
+		// return Response::download('provas/'.$file);
 
 	}
 
@@ -93,13 +104,7 @@ class AvalController extends Controller
 
 	}
 
-	public function verPdf(Request $request){
-		$pdf_nome = $request->get('verProva');
-		//return $pdf_nome;
-		$file = $pdf_nome;
-		return Response::download('provas/'.$file);
-	}
-
+	
 	public function uploadPdf(Request $request, Materia $materia, Provas $prova, Avaliacoes $avaliacao){
 		$pdf = $request->file('pdf');
 		$idAva = $request->idAva;
