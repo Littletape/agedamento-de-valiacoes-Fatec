@@ -8,7 +8,7 @@
 
 <center>
 	<h1 style="color: blue;">Relatório</h1>
-	<h3>Data: xx/xx/xxxx &nbsp; &nbsp; Horario: xx:xx:xx</h3>
+	<h3>Data: {{date("Y-m-d")}} &nbsp; &nbsp; Horario: {{date("H:i:s")}}</h3>
 </center>
 
 <table align="center">
@@ -17,14 +17,26 @@
 <th>&nbsp; Data &nbsp;</th>
 <th>&nbsp; Sem. &nbsp;</th>
 <th>&nbsp; Materia &nbsp;</th>
-<th>&nbsp; Aluno &nbsp;</th>
-<th>&nbsp; Nota &nbsp;</th>
+@if($qtd == 1)
 <th>&nbsp; Qtd. &nbsp;</th>
+@else
+<th>&nbsp; Nome do Aluno &nbsp;</th>
+@endif
 </tr>
 
-<tr><td>xx</td><td>Data 1</td><td>1° Sem.</td><td>Materia 1</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td><td>xx</td></tr>
-
-<tr><td>xx</td><td>Data 2</td><td>2° Sem.</td><td>Materia 2</td><td>Nome: xxxxxxxxxxx<br>Cpf: xxxxxxxxxxx<br>Ra: xxxxxxxxxxx</td><td>xx</td><td>xx</td></tr>
+@foreach($resultado as $resultados)
+<tr>
+	<td>{{$n = $n+1}}</td>
+	<td>{{$resultados->data}}</td>
+	<td>{{$resultados->semestre}}</td>
+	<td>{{$resultados->materia}}</td>
+	@if($qtd == 1)
+	<td>Teste</td>
+	@else
+	<td>{{$resultados->nome}}</td>
+	@endif
+</tr>
+@endforeach
 
 </body>
 
