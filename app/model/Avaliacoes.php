@@ -22,12 +22,13 @@ class Avaliacoes extends Model
 
     public function avaliacoesCadastradas($operador,$condicao){
 
-        $dados = DB::table('avaliacoes as a')->select('a.dia','c.nome as nomeCurso','ag.usuario_id','ag.avaliacoes_id as avaAgendada_id','ag.materia_id as materiaAgendada','a.id','a.data','sme.semestre','sma.semana','a.materia_id','a.pdf_nome','a.semana_id','a.semestre_id','m.nome as materia')
+        $dados = DB::table('avaliacoes as a')->select('a.dia','c.nome as nomeCurso','ag.usuario_id','ag.avaliacoes_id as avaAgendada_id','ag.materia_id as materiaAgendada','a.id','a.data','sme.semestre','sma.semana','a.materia_id','p.pdf_nome','a.prova_id','a.semana_id','a.semestre_id','m.nome as materia')
         ->join('semestre_avaliacoes as sme','a.semestre_id','sme.id')
         ->join('semanas_avaliacoes as sma','a.semana_id','sma.id')
         ->join('materias as m','a.materia_id','m.id')
         ->join('cursos as c','c.id','a.curso_id')
         ->leftjoin('avaliacoes_agendadas as ag','a.id','ag.avaliacoes_id')
+        ->leftjoin('provas as p','a.prova_id','p.id')
         ->where('a.semestre_id',''.$operador.'',$condicao)
         ->orderBy('a.data')
         ->distinct()

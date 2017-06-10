@@ -12,6 +12,7 @@ use App\Model\Semestre;
 use App\Model\Semana;
 use App\Model\Curso;
 use App\Model\Materia;
+use App\Model\Provas;
 
 class AvalController extends Controller
 {
@@ -60,6 +61,10 @@ class AvalController extends Controller
 		$aval = $avaliacoes->avaliacoesCadastradas($operador,$semestre);
 		$cursos = $curso->all();
 		return view('admin.provas',compact('aval','semestres','semanas','cursos','materias'));
+
+		// echo '<pre>';
+		// echo print_r($aval);
+		// echo '</pre>';
 		
 		}
 	}
@@ -95,9 +100,21 @@ class AvalController extends Controller
 		return Response::download('provas/'.$file);
 	}
 
-	public function uploadPdf(Request $request, Avaliacoes $avaliacoes){
+	public function uploadPdf(Request $request, Materia $materia, Provas $prova, Avaliacoes $avaliacao){
 		$pdf = $request->file('pdf');
-		$idAva = $request->idAva; 
+		$idAva = $request->idAva;
+		$materia_id = $request->materia_id;
+		$semestre_id = $request->semestre_id; 
+		$semana_id = $request->semana_id;
+
+		$buscaProva = $prova->select('id')
+		->where('materia_id',$materia_id)
+		->where('semana_id',$semana_id)
+		->where('semestre_id',$semestre_id)
+		->get();
+
+		echo json_encode($buscaProva);
+
 		
 		$destinationPath = public_path().DIRECTORY_SEPARATOR.'files/uploads';
 		if($pdf->isValid()){
@@ -105,9 +122,26 @@ class AvalController extends Controller
 			$upload = $pdf->move($destinationPath, $fileName);
 
 			if($upload){
-				$avaliacoes->where('id',$idAva)->update(['pdf_nome' => $fileName]);
+				if(isset($buscaProva[0]) ){
+					echo 'prova existe';
+					$prova->where('materia_id',$materia_id)
+					->where('semana_id',$semana_id)
+					->where('semestre_id',$semestre_id)
+					->update(['pdf_nome' => $fileName]);	
+				}else{
+					echo 'prova não existe';
+					$insert =	$prova->create(['materia_id' => $materia_id, 'semestre_id' => $semestre_id, 'semana_id' => $semana_id, 'pdf_nome' => $fileName]);
+
+					$avaliacao->where('materia_id',$materia_id)
+					->where('semana_id',$semana_id)
+					->where('semestre_id',$semestre_id)
+					->update(['prova_id' => $insert->id]);
+				}
+				
 				return redirect()->route('avaliacoes');
 			}
+		}else{
+			echo 'erro';
 		}	
 	}
 }

@@ -12,6 +12,7 @@
 						<h4 class="modal-title">Selecione o PDF</h4>
 					</div>
 					<div class="modal-body">
+
 						<form id="formPdf" action="{{route('uploadPdf')}}" method="POST" enctype="multipart/form-data">
 						{!!csrf_field()!!}
 							<div class="input-group">
@@ -20,6 +21,9 @@
 									<input class="form-control" type="file" name="pdf">
 									<button class="btn btn-primary savePdf" type="submit" name="enviar">Enviar</button>
 									<input id="insertPdf" type="hidden" value="" name="idAva">
+									<input id="materia_id" type="hidden" value="" name="materia_id">
+									<input id="semestre_id" type="hidden" value="" name="semestre_id">
+									<input id="semana_id" type="hidden" value="" name="semana_id">
 								</div>
 								</div>
 							</div>		
@@ -35,13 +39,103 @@
 
 			</div>
 		</div>
-	
-<form action="{{route('cadAvaliacao')}}" method="POST" accept-charset="utf-8">
-{!!csrf_field()!!}
-	<div class="row">
-	
 		<!-- Fim Modal -->
 
+		<!-- Modal -->
+		<div id="modalCadAva" class="modal fade" role="dialog" tabindex="1">
+			<div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Cadastrar Avaliação</h4>
+					</div>
+					<div class="modal-body">
+						<form action="{{route('cadAvaliacao')}}" method="POST" accept-charset="utf-8">
+						{!!csrf_field()!!}
+							<div class="row">
+										
+								<div class="col-md-4 col-xs-12">
+									<label>Selecione o Curso:</label>
+									<select name='curso_id' required class="form-control" placeholder='Selecione o Curso'>
+										@forelse($cursos as $curso)
+										<option value='{{$curso->id}}'>{{$curso->nome}}</option>
+										@empty
+											<option>Nenhum curso cadastrado</option>
+										
+										@endforelse
+									</select>	
+									</select>
+								</div>
+
+								<div class="col-md-4 col-xs-12">
+									<label>Selecione o semestre:</label>
+									<select name="semestre_id" required class="form-control" placeholder='Selecione o Curso'>
+										@forelse($semestres as $semestre)
+										<option value="{{$semestre->id}}" >{{$semestre->semestre}}</option>
+										@empty
+											<option>Nenhum semestre cadastrado</option>
+										
+										@endforelse
+									</select>	
+								</div>
+
+								<div class="col-md-4 col-xs-12">
+									<label>Selecione a semana:</label>
+									<select name="semana_id" required class="form-control" placeholder='Selecione o Curso'>
+										@forelse($semanas as $semana)
+										<option value="{{$semana->id}}">{{$semana->semana}}</option>
+										@empty
+											<option>Nenhuma semana cadastrada</option>
+										
+										@endforelse
+									</select>	
+								</div>
+							</div><br>
+
+							<div class="row">
+								<div class="col-md-4 ">
+									<input required type="date" name="data" class="form-control">
+								</div>
+								
+								<div class="col-md-4">
+									<select name="dia" class="form-control">
+										<option>Segunda-Feira</option>
+										<option>Terça-Feira</option>
+										<option>Quarta-Feira</option>
+										<option>Quinta-Feira</option>
+										<option>Sexta-Feira</option>
+										<option>Sabado</option>
+									</select>
+								</div>
+								<div class="col-md-3">
+									<select name="materia_id" class="form-control">
+										@forelse($materias as $materia)
+										<option value="{{$materia->id}}">{{$materia->nome}}</option>
+										@empty
+											<option>Nenhuma materia cadastrada</option>
+										
+										@endforelse
+										
+									</select>
+								</div>
+								<div class="col-md-1"><button type="submit" name="busca" class="btn btn-success glyphicon glyphicon-ok"></button></div>
+							</div><br>
+						</form>
+						
+					</div>
+					
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- Fim Modal -->
 
 		@if(isset($_GET['msg']))
 			
@@ -56,72 +150,13 @@
 				@endif
 			
 		@endif
-		<div class="col-md-3 col-md-offset-2 col-xs-12">
-			<label>Selecione o Curso:</label>
-			<select name='curso_id' required class="form-control" placeholder='Selecione o Curso'>
-				@forelse($cursos as $curso)
-				<option value='{{$curso->id}}'>{{$curso->nome}}</option>
-				@empty
-					<option>Nenhum curso cadastrado</option>
-				
-				@endforelse
-			</select>	
-			</select>
-		</div>
 
-		<div class="col-md-3 col-xs-12">
-			<label>Selecione o semestre:</label>
-			<select name="semestre_id" required class="form-control" placeholder='Selecione o Curso'>
-				@forelse($semestres as $semestre)
-				<option value="{{$semestre->id}}" >{{$semestre->semestre}}</option>
-				@empty
-					<option>Nenhum semestre cadastrado</option>
-				
-				@endforelse
-			</select>	
-		</div>
-
-		<div class="col-md-2 col-xs-12">
-			<label>Selecione a semana:</label>
-			<select name="semana_id" required class="form-control" placeholder='Selecione o Curso'>
-				@forelse($semanas as $semana)
-				<option value="{{$semana->id}}">{{$semana->semana}}</option>
-				@empty
-					<option>Nenhuma semana cadastrada</option>
-				
-				@endforelse
-			</select>	
-		</div>
-	</div><br>
-
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2"><label>Insira aqui a data da prova:</label></div>
-		<div class="col-md-2 col-md-offset-2"><input required type="date" name="data" class="form-control"></div>
-		<div class="col-md-2">
-			<select name="dia" class="form-control">
-				<option>Segunda-Feira</option>
-				<option>Terça-Feira</option>
-				<option>Quarta-Feira</option>
-				<option>Quinta-Feira</option>
-				<option>Sexta-Feira</option>
-				<option>Sabado</option>
-			</select>
-		</div>
-		<div class="col-md-3">
-			<select name="materia_id" class="form-control">
-				@forelse($materias as $materia)
-				<option value="{{$materia->id}}">{{$materia->nome}}</option>
-				@empty
-					<option>Nenhuma materia cadastrada</option>
-				
-				@endforelse
-				
-			</select>
-		</div>
-		<div class="col-md-1"><button type="submit" name="busca" class="btn btn-success glyphicon glyphicon-ok"></button></div>
-	</div><br>
-</form>
-
+<div class="row">
+	<div class="col-md-10 col-md-offset-1 col-xs-12">
+		<button id="cadAva" class="btn btn-primary"><b>Cadastrar avaliação</b></button>
+	</div>
+</div>
+<br>
 <div class="row">
 	<div class="col-md-10 col-md-offset-1 col-xs-12">
 		
@@ -137,6 +172,7 @@
 
 				<tr style="background-color: white">
 					@forelse($aval as $key => $avaliacoes)
+							
 						@if($semana->id == $avaliacoes->semana_id)
 						
 							@if($key < 1)
@@ -147,18 +183,30 @@
 										<tr><td>{{$avaliacoes->dia}}</td></tr>
 									
 											@foreach($aval as $indice => $info)
+													<?php 
+													if($info->pdf_nome == ''){
+														$styleButon = 'btn btn-danger';
+														$label = 'Cadastrar PDF';
+													}
+													else{
+														$styleButon = 'btn btn-primary';
+														$label = '<b>PDF cadastrado<br>'.$info->pdf_nome.'</b><br>Clique para substituir';
+													}
+													
+													?>
 												@if($avaliacoes->data == $info->data and $info->semestre_id == $semestre->id)
+
 													<tr>
 														<td>{{$info->materia}}</td>
 														<td>
 															<div class="btn-group">
-															  <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-menu-hamburger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+															  <button type="button" class="{{$styleButon}} btn-sm glyphicon glyphicon-menu-hamburger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 															   <span class="caret"></span>
 															  </button>
 															  <ul class="dropdown-menu subIten">
 															    <li><a id="{{$info->id}}" class="editMat" materiaId="{{$info->materia_id}}" materia="{{$info->materia}}">Editar</a></li>
 															    <li><a id="{{$info->id}}" class="delAva">Excluir</a></li>
-															    <li><a id="{{$info->id}}" class="envPdf">Cadastrar PDF</a></li>
+															    <li><a id="{{$info->id}}" semestre_id="{{$info->semestre_id}}" semana_id="{{$info->semana_id}}" materia_id="{{$info->materia_id}}" class="envPdf"><?php echo $label ?></a></li>
 															  
 															  </ul>
 															</div>
@@ -178,18 +226,30 @@
 									
 
 											@foreach($aval as $indice => $info)
+													<?php 
+													if($info->pdf_nome == ''){
+														$styleButon = 'btn btn-danger';
+														$label = 'Cadastrar PDF';
+													}
+													else{
+														$styleButon = 'btn btn-primary';
+														$label = '<b>PDF cadastrado<br>'.$info->pdf_nome.'</b><br>Clique para substituir';
+													}
+													
+													?>
 												@if($avaliacoes->data == $info->data and $info->semestre_id == $semestre->id) 
+
 													<tr>
 														<td>{{$info->materia}}</td>
 														<td>
 															<div class="btn-group">
-															  <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-menu-hamburger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+															  <button type="button" class="{{$styleButon}} btn-sm glyphicon glyphicon-menu-hamburger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 															   <span class="caret"></span>
 															  </button>
 															  <ul class="dropdown-menu subIten">
 															    <li><a id="{{$info->id}}" class="editMat" materia="{{$info->materia}}" materiaId="{{$info->materia_id}}">Editar</a></li>
 															    <li><a id="{{$info->id}}" class="delAva">Excluir</a></li>
-															  	<li><a id="{{$info->id}}" class="envPdf">Cadastrar PDF</a></li>
+															  	<li><a id="{{$info->id}}" semestre_id="{{$info->semestre_id}}" semana_id="{{$info->semana_id}}" materia_id="{{$info->materia_id}}" class="envPdf"><?php echo $label ?></a></li>
 															  </ul>
 															</div>
 														</td>
@@ -304,8 +364,20 @@
 <script type="text/javascript">
 	$(document).on('click','.envPdf', function(){
 		var id = $(this).attr('id');
+		var materia_id = $(this).attr('materia_id');
+		var semana_id = $(this).attr('semana_id');
+		var semestre_id = $(this).attr('semestre_id');
 		$('#insertPdf').val(id);
+		$('#materia_id').val(materia_id);
+		$('#semestre_id').val(semestre_id);
+		$('#semana_id').val(semana_id);
 		$('#modalPdf').modal();
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).on('click','#cadAva', function(){
+		$('#modalCadAva').modal();
 	});
 </script>
 
@@ -316,8 +388,10 @@
 	.subIten+li{
 		padding-left:20px;
 	}
-	.subIten+li:hover{
+	.subIten>li>a:hover{
+		cursor: pointer;
 		background-color: #f5f8fa;
+
 	}
 	.modal-backdrop{z-index: -1;}
 </style>
