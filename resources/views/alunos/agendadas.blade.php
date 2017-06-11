@@ -3,6 +3,21 @@
 @section("conteudo")
 
 <div class="row">
+
+		@if(isset($_GET['erro']))
+			
+				@if($_GET['erro'] == 1)
+					<div class="alert alert-danger">
+						<center><h5><b>O pdf desta prova ainda não está cadasrado no sistema, solicite ao professor responsável</b></h5></center>
+					</div>
+				@else
+					<div class="alert alert-danger">
+						<center><h5><b>Acesso negado, você só poderá fazer download da avaliação após o data definida no calendário</b></h5></center>
+					</div>
+				@endif
+			
+		@endif
+
 	<div class="col-md-8 col-md-offset-2 col-xs-12">
 		<div class="panel panel-primary">
 			<div class="panel-heading"><center><b>Avaliações Agendadas</b></center></div>

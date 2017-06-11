@@ -3,6 +3,18 @@
 @section("conteudo")
 
 <div class="row">
+	@if(isset($_GET['erro']))
+			
+				@if($_GET['erro'] == 1)
+					<div class="alert alert-danger">
+						<center><h5><b>Está prova ja está agendada para outro dia da semana, remova o agendamento atual caso queira mudar o dia</b></h5></center>
+					</div>
+				
+				@endif
+			
+		@endif
+</div>
+<div class="row">
 	<h2><center>Agendamento de Avaliações</center></h2>
 	<h3><center>Curso: Gestão empresarial</center></h3>
 </div>
@@ -32,10 +44,10 @@
 							@foreach($aval as $indice => $info)
 							@if($avaliacoes->data == $info->data)
 							@if($info->avaAgendada_id != '' and $info->materiaAgendada == $info->materia_id and $info->usuario_id == $idUsu)
-							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" checked="true"   name="materia"></span></td></tr>
+							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" semestre="{{$info->semestre_id}}" semana="{{$info->semana}}" checked="true"   name="materia"></span></td></tr>
 
 							@else
-							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar"  name="materia"></span></td></tr>
+							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" semestre="{{$info->semestre_id}}" semana="{{$info->semana}}"  name="materia"></span></td></tr>
 							@endif
 							@endif
 							@endforeach
@@ -49,10 +61,10 @@
 							@foreach($aval as $indice => $info)
 							@if($avaliacoes->data == $info->data)
 							@if($info->avaAgendada_id != '' and $info->materiaAgendada == $avaliacoes->materia_id and $info->usuario_id == $idUsu)
-							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" checked="true"  name="materia"></span></td></tr>
+							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" semestre="{{$info->semestre_id}}" semana="{{$info->semana}}" checked="true"  name="materia"></span></td></tr>
 
 							@else
-							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar"   name="materia"></span></td></tr>
+							<tr><td>{{$info->materia}} <span><input style="float: right;" type="checkbox" id="{{$info->id}}" materia_id="{{$info->materia_id}}" class="agendar" semestre="{{$info->semestre_id}}" semana="{{$info->semana}}"   name="materia"></span></td></tr>
 							@endif
 							@endif
 							@endforeach
@@ -90,18 +102,22 @@
 		env.materia_id = $(this).attr('materia_id');
 		env.id = $(this).attr('id');
 		env.status = $(this).is(":checked");
-
+		env.semestre = $(this).attr('semestre');
+		env.semana = $(this).attr('semana');
 		
 		console.log(env);
 		// envia o array com os chekbox por get
-		$.get('/agendar/'+env.materia_id+'/'+env.id+'/'+env.status, function(env){
+		$.get('/agendar/'+env.materia_id+'/'+env.id+'/'+env.status+'/'+env.semestre+'/'+env.semana, function(env){
+			console.log('retorno '+env);
 			if(env == true){
 			alert('Agendamento realizado com sucesso');
-		}else{
+		}else if(env == false){
 			alert('Agendamento removido com sucesso');
-		}
-			
+		}else if(env == 'erro'){
+			alert('Está prova ja está agendada para outro dia da semana, remova o agendamento atual caso queira mudar o dia');
+		}	
 		});	
+		
 
 	});
 </script>

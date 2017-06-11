@@ -15,6 +15,14 @@ use Dompdf\Dompdf;
 
 class AdminController extends Controller {
 
+	public function relatorio(){
+		$permissao_id = session()->get('permissao_id');
+		if($permissao_id != 1){
+	 		return redirect('/acessoNegado');
+	 		}else{
+	 			return view('admin.relatorio');
+	 		}
+	}
 	public function agendadasHoje(){
 		$hoje = date("Y-m-d");
 

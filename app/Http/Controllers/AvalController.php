@@ -39,18 +39,27 @@ class AvalController extends Controller
 		$file = $pdf_nome;
 		$post = $request->all();
 		$busca = $avaliacao->find($post['idAva']);
-		$dataAgendada = $busca->data;
 		$dataAtual = date("Y-m-d h:i:sa");
-		// $dataAtual= strtotime($dataAtual);
+		$dataAtual= strtotime($dataAtual);
+		$dataAgendada = $busca->data;
 		$dataAgendada =  strtotime($dataAgendada);
 
-		echo $dataAtual.'<br>'.$dataAgendada.'<br>';
-		if($dataAgendada <= $dataAtual){
-			echo 'não chegou o dia da prova';
+		// echo $dataAtual.'<br>'.$dataAgendada.'<br>';
+		// só permite fazer o download da prova caso a data e hora atual seja mior do que a data e hora definida para a prova
+		if($dataAtual  <= $dataAgendada){
+			$erro = 2;
+			return redirect()->route('provasAgendadas',compact('erro'));
 		}else{
-			return Response::download(public_path().DIRECTORY_SEPARATOR.'files/uploads/'.$post['pdf_nome']);
+			if($busca['prova_id'] != null || $busca['prova_id'] > 0 || $busca['prova_id'] != ''){
+				return Response::download(public_path().DIRECTORY_SEPARATOR.'files/uploads/'.$post['pdf_nome']);
+			}else{
+				// pdf não enviado pelo professor
+				$erro = 1;
+				return redirect()->route('provasAgendadas',compact('erro'));
+			}
+			
 		}
-		echo json_encode($busca);
+		
 
 		
 		
@@ -66,18 +75,23 @@ class AvalController extends Controller
 
 	public function listarAvaliacoes(Avaliacoes $avaliacoes, Semestre $semestre, Semana $semana, Curso $curso, Materia $materia){
 
-		$semanas = $semana->all();
+		$permissao_id = session()->get('permissao_id');
+	 	$semanas = $semana->all();
 		$semestres = $semestre->all();
 		$idUsu = session()->get('id');
 		$semestre = session()->get('semestre_id');
 		$nameRoute = Route::currentRouteName();
-
+		// retorna a view de agendamento de avaliacoes
 		if($nameRoute == 'agendar'){
 			$semestre = session()->get('semestre_id');
 			$operador = '=';
 			$aval = $avaliacoes->avaliacoesCadastradas($operador,$semestre);
-		// retorna a view de agendamento de avaliacoes
-			return view('alunos.agendamento',compact('aval','semestre','semanas','idUsu'));
+			if($permissao_id != 2){
+	 		return redirect('/acessoNegado');
+	 		}else{
+	 			return view('alunos.agendamento',compact('aval','semestre','semanas','idUsu'));
+	 		}	
+			
 		// se não retorna a view de cadastro das provas 		
 		}else{
 		$materias =  $materia->all();	
@@ -85,8 +99,12 @@ class AvalController extends Controller
 		$operador = '>=';
 		$aval = $avaliacoes->avaliacoesCadastradas($operador,$semestre);
 		$cursos = $curso->all();
-		return view('admin.provas',compact('aval','semestres','semanas','cursos','materias'));
 
+		if($permissao_id != 1){
+	 		return redirect('/acessoNegado');
+	 		}else{
+				return view('admin.provas',compact('aval','semestres','semanas','cursos','materias'));
+			}	
 		// echo '<pre>';
 		// echo print_r($aval);
 		// echo '</pre>';
@@ -94,13 +112,29 @@ class AvalController extends Controller
 		}
 	}
 
-	public function agendarAvaliacao($materia_id,$id,$status, AvaliacaoAgendada $avaliacao){
+	public function agendarAvaliacao($materia_id,$id,$status,$semestre,$semana, AvaliacaoAgendada $avaliacao){
 		$idUsu = session()->get('id');
-
+		// verifica se a avaliação ja está agendada
+						
 		if($status == 'true'){
-			$avaliacao->create(['avaliacoes_id' => $id, 'usuario_id' => $idUsu, 'materia_id' => $materia_id]);
-			$resposta = true;
-			return Response::json($resposta); 
+			$busca = $avaliacao->where('semestre_id',$semestre)
+			->where('semana_id',$semana)
+			->where('materia_id',$materia_id)	
+			->get();	
+			if(isset($busca[0]) ){
+				$result = $busca[0];	
+				
+				if($result->semestre_id == $semestre && $result->semana_id == $semana && $result->materia_id == $materia_id && $result->usuario_id == $idUsu){
+					// Indica que o agendamento da avaliação dessa materia ja foi realizado na semana e semestre selecionado
+					$resposta = 'erro';
+					return Response::json($resposta);
+				}
+			}else{
+				$avaliacao->create(['avaliacoes_id' => $id, 'usuario_id' => $idUsu, 'materia_id' => $materia_id, 'semestre_id' => $semestre, 'semana_id' => $semana]);
+				$resposta = true;
+				return Response::json($resposta);
+			}
+
 		}else{
 			$avaliacao->where('avaliacoes_id', $id)->delete();
 			$resposta = false;

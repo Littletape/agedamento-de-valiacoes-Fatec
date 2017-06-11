@@ -12,7 +12,9 @@ class AvaliacaoAgendada extends Model
     	'id',
     	'avaliacoes_id',
     	'usuario_id',
-    	'materia_id'
+    	'materia_id',
+    	'semestre_id',
+    	'semana_id'
     	
     ];
 }

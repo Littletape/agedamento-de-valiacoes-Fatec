@@ -21,11 +21,14 @@ Route::post('/validacao','PessoasController@login');  //COntroller Login
 
 Route::get('/logout','PessoasController@logout');  //COntroller Login
 
-// });
+Route::get('/acessoNegado', function(){
+	return view('acessoNegado');
+});
 
-Route::get('/agendadas','usuarios\alunos\AlunoController@avaliacoesAgendadas' );
+// Area do aluno
+Route::get('/agendadas','usuarios\alunos\AlunoController@avaliacoesAgendadas' )->name('provasAgendadas');
 
-Route::get('/agendar/{materia_id}/{id}/{status}', 'usuarios\alunos\avaliacao\AvalController@agendarAvaliacao');
+Route::get('/agendar/{materia_id}/{id}/{status}/{semestre}/{semana}', 'usuarios\alunos\avaliacao\AvalController@agendarAvaliacao');
 
 Route::get('/excluir/avaliacao/{id}', 'usuarios\alunos\avaliacao\AvalController@excluirAvaliacao');
 
@@ -44,9 +47,7 @@ Route::post('/provas/pdf','usuarios\alunos\avaliacao\AvalController@verPdf')->na
 
 Route::post('/upload','usuarios\alunos\avaliacao\AvalController@uploadPdf')->name('uploadPdf');
 
-Route::get('/relatorio', function(){
-	return view('admin.relatorio');
-});
+Route::get('/relatorio', 'usuarios\admin\AdminController@relatorio');
 
 Route::get('/relatorio/agendadasHoje', 'usuarios\admin\AdminController@agendadasHoje');
 

@@ -12,9 +12,14 @@ class AlunoController extends Controller
 {
  
 	 public function avaliacoesAgendadas (AvaliacaoAgendada $avaliacoes, Avaliacoes $avaAg){
+	 	$permissao_id = session()->get('permissao_id');
+	 	if($permissao_id == 2){
+	 		$result = $avaAg->avaliacoesAgendadas();
+	 		return view('alunos.agendadas',compact('result'));	
+	 	}else{
+	 		return redirect('/acessoNegado');
+	 	}
 	 	
-	 	$result = $avaAg->avaliacoesAgendadas();
-	 	return view('alunos.agendadas',compact('result'));	
 	 }
 
  }
